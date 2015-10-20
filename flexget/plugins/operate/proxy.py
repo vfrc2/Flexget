@@ -8,7 +8,7 @@ from flexget.event import event
 
 log = logging.getLogger('proxy')
 
-PROTOCOLS = ['http', 'https', 'ftp']
+PROTOCOLS = ['http', 'https', 'ftp', 'socks5']
 
 
 class Proxy(object):
@@ -16,10 +16,10 @@ class Proxy(object):
 
     schema = {
         'oneOf': [
-            {'type': 'string', 'format': 'url'},
+            {'type': 'string', 'format': 'string'},
             {
                 'type': 'object',
-                'properties': dict((prot, {'type': 'string', 'format': 'url'}) for prot in PROTOCOLS),
+                'properties': dict((prot, {'type': 'string', 'format': 'string'}) for prot in PROTOCOLS),
                 'additionalProperties': False
             }
         ]

@@ -104,7 +104,8 @@ class Session(requests.Session):
         requests.Session.__init__(self)
         self.timeout = timeout
         self.stream = True
-        self.adapters['http://'].max_retries = max_retries
+        self.adapters=[]
+        #self.adapters['http://'].max_retries = max_retries
         # Stores min intervals between requests for certain sites
         self.domain_delay = {}
         self.headers.update({'User-Agent': 'FlexGet/%s (www.flexget.com)' % version})
