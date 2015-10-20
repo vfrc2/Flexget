@@ -5,7 +5,10 @@ import logging
 from datetime import timedelta, datetime
 from urlparse import urlparse
 
-import requests
+
+#import requests
+import requesocks as requests
+
 # Allow some request objects to be imported from here instead of requests
 from requests import RequestException, HTTPError
 
@@ -80,7 +83,7 @@ def _wrap_urlopen(url, timeout=None):
         log.error(msg)
         raise RequestException(msg)
     resp = requests.Response()
-    resp.raw = raw
+    resp.raw = raw 
     # requests passes the `decode_content` kwarg to read
     orig_read = raw.read
     resp.raw.read = lambda size, **kwargs: orig_read(size)
